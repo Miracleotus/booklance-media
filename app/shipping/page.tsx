@@ -2,47 +2,69 @@
 
 import { motion } from "framer-motion";
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
 export default function ShippingPage() {
   return (
-    <main className="bg-brand-dark text-white min-h-screen pt-32 pb-24 px-6 font-body">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto"
-      >
-        <h1 className="font-display text-4xl md:text-5xl font-bold mb-10 leading-tight">
-          Shipping Policy
-        </h1>
+    <main className="bg-brand-dark text-white font-body">
+      <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16"
+        >
+          <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight mb-6">
+            Shipping Policy
+          </h1>
+          <p className="text-brand-gray text-lg">Last updated: April 16, 2026</p>
+        </motion.div>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">1. Order Processing Time</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            All orders are processed within 1 to 2 business days (excluding weekends and holidays) after receiving your order confirmation email. You will receive another notification when your order has shipped.
-          </p>
-        </section>
+        <div className="space-y-12">
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">1. Digital Delivery</h2>
+            <p className="text-brand-gray leading-relaxed">
+              Zenvira Software Solutions provides digital products and services. Therefore, no physical shipping of goods is required.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">2. Domestic Shipping Rates and Estimates</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            Shipping charges for your order will be calculated and displayed at checkout. We offer Standard Shipping (3-5 business days) and Expedited Shipping (1-2 business days). Free standard shipping is available on all orders over $100.
-          </p>
-        </section>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">2. Delivery of Code and Digital Assets</h2>
+            <p className="text-brand-gray leading-relaxed">
+              Completed projects, source code, and design files will be delivered electronically via secure file transfer, GitHub/GitLab repositories, or deployed directly to your designated web server or cloud hosting environment (e.g., AWS, DigitalOcean).
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">3. International Shipping</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            At this time, we only ship within the domestic United States and Canada. We are working diligently to expand our shipping zones globally.
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">4. Order Tracking</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            When your order has shipped, you will receive an email notification from us which will include a tracking number you can use to check its status. Please allow 48 hours for the tracking information to become available.
-          </p>
-        </section>
-      </motion.div>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">3. Delivery Timelines</h2>
+            <p className="text-brand-gray leading-relaxed">
+              Delivery timelines for custom software and web development are determined on a project-by-project basis and will be clearly outlined in your individual project proposal or Statement of Work (SOW). Delivery of productized services purchased via our store will commence within the timeframe specified in the product description.
+            </p>
+          </motion.section>
+        </div>
+      </section>
     </main>
   );
 }

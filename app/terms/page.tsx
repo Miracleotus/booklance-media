@@ -2,47 +2,81 @@
 
 import { motion } from "framer-motion";
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
 export default function TermsPage() {
   return (
-    <main className="bg-brand-dark text-white min-h-screen pt-32 pb-24 px-6 font-body">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto"
-      >
-        <h1 className="font-display text-4xl md:text-5xl font-bold mb-10 leading-tight">
-          Terms and Conditions
-        </h1>
+    <main className="bg-brand-dark text-white font-body">
+      <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16"
+        >
+          <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight mb-6">
+            Terms and Conditions
+          </h1>
+          <p className="text-brand-gray text-lg">Last updated: April 16, 2026</p>
+        </motion.div>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">1. Overview</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            This website is operated by Calvexa Home Living. By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions.
-          </p>
-        </section>
+        <div className="space-y-12">
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">1. Acceptance of Terms</h2>
+            <p className="text-brand-gray leading-relaxed">
+              By accessing our website or engaging Zenvira Software Solutions for development services, you agree to be bound by these Terms and Conditions.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">2. Online Store Terms</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            You may not use our products for any illegal or unauthorized purpose nor may you, in the use of the Service, violate any laws in your jurisdiction. A breach or violation of any of the Terms will result in an immediate termination of your Services.
-          </p>
-        </section>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">2. Intellectual Property</h2>
+            <p className="text-brand-gray leading-relaxed">
+              Upon receipt of full and final payment, the client retains ownership of the final codebase, website, or digital product created by Zenvira, unless otherwise specified in a separate service level agreement. Zenvira retains the right to display the completed work in our portfolio.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">3. Products or Services</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            Certain products or services may be available exclusively online through the website. We have made every effort to display as accurately as possible the colors and images of our products. We cannot guarantee that your computer monitor's display of any color will be accurate.
-          </p>
-        </section>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">3. Client Responsibilities</h2>
+            <p className="text-brand-gray leading-relaxed">
+              The client agrees to provide necessary access to hosting environments, domain registrars, and brand assets required to complete the project in a timely manner. Delays in client feedback may result in adjusted project timelines.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">4. Limitation of Liability</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            In no case shall Calvexa Home Living, our directors, or employees be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, or consequential damages of any kind arising from your use of any of the service or any products procured using the service.
-          </p>
-        </section>
-      </motion.div>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">4. Limitation of Liability</h2>
+            <p className="text-brand-gray leading-relaxed">
+              Zenvira Software Solutions shall not be liable for any indirect, incidental, or consequential damages, including loss of profits or data, arising out of the use or inability to use the software or websites we develop, or any third-party plugins/APIs integrated into the final product.
+            </p>
+          </motion.section>
+        </div>
+      </section>
     </main>
   );
 }

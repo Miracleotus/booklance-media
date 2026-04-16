@@ -2,47 +2,81 @@
 
 import { motion } from "framer-motion";
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
 export default function PrivacyPage() {
   return (
-    <main className="bg-brand-dark text-white min-h-screen pt-32 pb-24 px-6 font-body">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto"
-      >
-        <h1 className="font-display text-4xl md:text-5xl font-bold mb-10 leading-tight">
-          Privacy Policy
-        </h1>
+    <main className="bg-brand-dark text-white font-body">
+      <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16"
+        >
+          <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight mb-6">
+            Privacy Policy
+          </h1>
+          <p className="text-brand-gray text-lg">Last updated: April 16, 2026</p>
+        </motion.div>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">1. Introduction</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            Welcome to Calvexa Home Living. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website.
-          </p>
-        </section>
+        <div className="space-y-12">
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">1. Introduction</h2>
+            <p className="text-brand-gray leading-relaxed">
+              Zenvira Software Solutions ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or engage our software development services.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">2. Data We Collect</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            We may collect, use, store, and transfer different kinds of personal data about you, including Identity Data (name, username), Contact Data (billing address, delivery address, email), Financial Data (payment card details), and Transaction Data (details about payments to and from you).
-          </p>
-        </section>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">2. Information We Collect</h2>
+            <p className="text-brand-gray leading-relaxed mb-4">
+              We may collect personal identification information (Name, Email Address, Phone Number, Company Details) when you fill out contact forms, request a quote, or purchase our services. We also collect non-identifiable data such as browser types and IP addresses for website analytics.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">3. How We Use Your Data</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            We will only use your personal data when the law allows us to. Most commonly, we use your data to process and deliver your order, manage our relationship with you, and improve our website, products, and marketing.
-          </p>
-        </section>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">3. How We Use Your Information</h2>
+            <p className="text-brand-gray leading-relaxed">
+              The data we collect is used strictly to provide and improve our services, process transactions, manage client communications, and send periodic technical updates or invoices. We do not sell or rent your personal information to third parties.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">4. Data Security</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorized way.
-          </p>
-        </section>
-      </motion.div>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">4. Data Security</h2>
+            <p className="text-brand-gray leading-relaxed">
+              We implement industry-standard security measures, including SSL encryption and secure server hosting, to maintain the safety of your personal information. However, no data transmission over the internet can be guaranteed as 100% secure.
+            </p>
+          </motion.section>
+        </div>
+      </section>
     </main>
   );
 }

@@ -17,8 +17,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Calvexa Home Living | Premium Household Essentials",
-  description: "Discover beautifully crafted, functional household items designed to turn your house into a home you love.",
+  title: "Zenvira Software Solutions | Custom Web & Software Development",
+  description: "Scalable, secure, and high-performance websites and applications tailored to your business goals. Expert development and design services.",
 };
 
 export default function RootLayout({

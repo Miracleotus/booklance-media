@@ -12,25 +12,25 @@ export default function AboutPage() {
         className="max-w-3xl mx-auto"
       >
         <h1 className="font-display text-5xl md:text-6xl font-bold mb-10 leading-tight">
-          Our Story: Bringing Comfort Home
+          Innovating the Digital Landscape
         </h1>
         <p className="text-brand-gray text-lg leading-relaxed mb-8">
-          At Calvexa Home Living, we understand that a home is more than just a physical space; it is your sanctuary, your gathering place, and your personal canvas. Founded on the belief that everyone deserves to live in a beautifully functional environment, Calvexa was born out of a passion for modern interior design and everyday utility.
+          Welcome to Zenvira Software Solutions. Founded on the principle that technology should empower rather than complicate, we are a dedicated team of software engineers, creative designers, and digital strategists. We specialize in crafting bespoke web and software solutions that help businesses thrive in an increasingly digital world.
         </p>
         
         <h2 className="font-display text-3xl font-bold mt-12 mb-6 text-brand-teal">Our Mission</h2>
         <p className="text-brand-gray text-lg leading-relaxed mb-12">
-          To provide homeowners with accessible, high-quality, and beautifully designed household items that enhance their daily routines and elevate their living spaces.
+          To deliver exceptional, scalable, and secure software solutions that solve real-world business challenges, streamline operations, and drive measurable growth for our clients.
         </p>
         
-        <h2 className="font-display text-3xl font-bold mb-6 text-brand-teal">Our Vision</h2>
+        <h2 className="font-display text-3xl font-bold mb-6 text-brand-teal">Our Approach</h2>
         <p className="text-brand-gray text-lg leading-relaxed mb-12">
-          To be the premier online destination for modern home essentials, recognized for our commitment to quality, aesthetic brilliance, and customer satisfaction. We want the name Calvexa to be synonymous with comfort and style.
+          We believe that the best software is built on a foundation of collaboration. We don't just take a brief and disappear for months. We partner with you, integrating your industry expertise with our technical prowess. We practice agile development, meaning we adapt to your needs, test frequently, and ensure the final product exceeds your expectations.
         </p>
         
-        <h2 className="font-display text-3xl font-bold mb-6 text-brand-teal">What We Stand For</h2>
+        <h2 className="font-display text-3xl font-bold mb-6 text-brand-teal">The Team</h2>
         <p className="text-brand-gray text-lg leading-relaxed">
-          We meticulously select each item in our catalog—from our artisan dinnerware to our plush bedding—ensuring it meets our strict standards for durability, sustainability, and design. Welcome to the Calvexa family. Let's make your house feel like home.
+          Based remotely but connected globally, the Zenvira team brings together top-tier talent from across the tech industry. When you work with us, you are getting dedicated professionals who treat your project as their own.
         </p>
       </motion.div>
     </main>

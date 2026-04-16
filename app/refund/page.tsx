@@ -2,40 +2,70 @@
 
 import { motion } from "framer-motion";
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
 export default function RefundPage() {
   return (
-    <main className="bg-brand-dark text-white min-h-screen pt-32 pb-24 px-6 font-body">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto"
-      >
-        <h1 className="font-display text-4xl md:text-5xl font-bold mb-10 leading-tight">
-          Refund Policy
-        </h1>
+    <main className="bg-brand-dark text-white font-body">
+      <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16"
+        >
+          <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight mb-6">
+            Refund Policy
+          </h1>
+          <p className="text-brand-gray text-lg">Last updated: April 16, 2026</p>
+        </motion.div>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">1. Returns</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            We have a 30-day return policy, which means you have 30 days after receiving your item to request a return. To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging.
-          </p>
-        </section>
+        <div className="space-y-12">
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">1. Digital Services and Development Work</h2>
+            <p className="text-brand-gray leading-relaxed">
+              Due to the custom nature of software development, web design, and consulting services, Zenvira Software Solutions generally does not offer refunds for work that has already been completed or hours that have been logged by our team.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">2. Damages and Issues</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            Please inspect your order upon reception and contact us immediately if the item is defective, damaged, or if you receive the wrong item, so that we can evaluate the issue and make it right.
-          </p>
-        </section>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">2. Productized Services (WooCommerce Purchases)</h2>
+            <p className="text-brand-gray leading-relaxed">
+              For pre-packaged services purchased directly through our website, you may request a full refund within 48 hours of purchase, provided that no discovery, design, or development work has commenced.
+            </p>
+          </motion.section>
 
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">3. Refunds</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            We will notify you once we've received and inspected your return. If approved, you'll be automatically refunded on your original payment method within 7-10 business days.
-          </p>
-        </section>
-      </motion.div>
+          <motion.section
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4 text-brand-teal">3. Milestone Payments</h2>
+            <p className="text-brand-gray leading-relaxed">
+              For larger custom projects billed in milestones, milestone deposits are non-refundable once the work for that specific milestone has begun. If a project is cancelled by the client mid-milestone, the client is responsible for paying for the hours worked up to the cancellation date.
+            </p>
+          </motion.section>
+        </div>
+      </section>
     </main>
   );
+}
 }
