@@ -1,103 +1,81 @@
 "use client";
 
-import React from "react";
-import { products } from "@/lib/products";
-import { formatPrice } from "@/lib/utils";
-import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { Code, Zap, Shield, Wrench, Palette, CheckCircle } from "lucide-react";
-
-const categoryIcons: Record<string, React.ReactNode> = {
-  "Web Development": <Code size={20} />,
-  "Software Solutions": <Zap size={20} />,
-  "Maintenance": <Wrench size={20} />,
-  "Consulting": <CheckCircle size={20} />,
-  "Design": <Palette size={20} />,
-  "Security": <Shield size={20} />,
-};
+import { products } from "@/lib/products";
+import { ShoppingCart, BookOpen } from "lucide-react";
 
 const fadeInUp: Variants = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: {
-    opacity: 1,
+  initial: { opacity: 0, y: 30 },
+  whileInView: { 
+    opacity: 1, 
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" }
   }
 };
 
-export default function ShopPage() {
-  const groupedProducts = products.reduce((acc, product) => {
-    if (!acc[product.category]) {
-      acc[product.category] = [];
-    }
-    acc[product.category].push(product);
-    return acc;
-  }, {} as Record<string, typeof products>);
+const staggerContainer: Variants = {
+  initial: { opacity: 0 },
+  whileInView: { 
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
 
+const staggerItem: Variants = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
+export default function ShopPage() {
   return (
-    <main className="bg-brand-dark text-white min-h-screen py-12 font-body">
-      <section className="max-w-7xl mx-auto px-6">
+    <main className="bg-brand-dark text-white font-body pt-32 pb-24 px-6 min-h-screen">
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-16 text-center"
+          initial="initial"
+          animate="whileInView"
+          variants={fadeInUp}
+          className="text-center mb-16"
         >
-          <h1 className="font-display text-5xl md:text-6xl font-bold mb-4">
-            Our Services Marketplace
-          </h1>
+          <h1 className="font-display text-5xl md:text-6xl font-bold mb-6">Our Library</h1>
           <p className="text-brand-gray text-lg max-w-2xl mx-auto">
-            Choose from our curated selection of web development, software engineering, and digital solutions tailored to your business needs.
+            Explore our premium collection of digital books. Instant access on any device.
           </p>
         </motion.div>
 
-        {Object.entries(groupedProducts).map(([ category, categoryProducts ]) => (
-          <motion.section
-            key={category}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-            className="mb-20"
-          >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="text-brand-teal">
-                {categoryIcons[category] || <Code size={20} />}
+        <motion.div 
+          variants={staggerContainer}
+          initial="initial"
+          animate="whileInView"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {products.map((product) => (
+            <motion.div 
+              key={product.id} 
+              variants={staggerItem}
+              className="bg-brand-navy/30 border border-white/10 rounded-2xl p-6 flex flex-col hover:border-brand-teal/50 transition-colors group"
+            >
+              <div className="bg-brand-dark/50 rounded-xl aspect-[3/4] mb-6 flex items-center justify-center border border-white/5 group-hover:bg-brand-dark/80 transition-colors">
+                <BookOpen size={48} className="text-brand-teal/50 group-hover:text-brand-teal transition-colors" />
               </div>
-              <h2 className="font-display text-3xl font-bold">{category}</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categoryProducts.map((product) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="border border-white/10 rounded-2xl p-6 flex flex-col gap-4 bg-white/2 hover:bg-white/5 transition-all group hover:border-brand-teal/50 hover:shadow-lg hover:shadow-brand-teal/10"
-                >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <span className="text-xs text-brand-teal uppercase tracking-widest font-semibold">{product.sku}</span>
-                      <h3 className="text-lg font-bold mt-2 group-hover:text-brand-teal transition-colors">{product.name}</h3>
-                    </div>
-                  </div>
-                  <p className="text-white/60 text-sm flex-1 line-clamp-2">{product.shortDesc}</p>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/10">
-                    <span className="text-2xl font-bold text-brand-teal">{formatPrice(product.price)}</span>
-                    <Link
-                      href={`/shop/${product.id}`}
-                      className="bg-brand-teal text-brand-dark text-xs font-semibold px-4 py-2 rounded-full hover:bg-brand-teal-light transition group-hover:shadow-lg group-hover:shadow-brand-teal/30"
-                    >
-                      View Details
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-        ))}
-      </section>
+              <div className="flex justify-between items-start mb-4 gap-4">
+                <div>
+                  <span className="text-brand-teal text-xs font-bold uppercase tracking-wider mb-2 block">{product.category}</span>
+                  <h2 className="font-display text-xl font-bold leading-tight">{product.name}</h2>
+                </div>
+                <span className="font-display text-lg font-bold">${product.price.toFixed(2)}</span>
+              </div>
+              <p className="text-brand-gray text-sm mb-8 flex-grow">{product.shortDesc}</p>
+              <button className="w-full bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-brand-dark font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+                <ShoppingCart size={18} /> Add to Cart
+              </button>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </main>
   );
 }

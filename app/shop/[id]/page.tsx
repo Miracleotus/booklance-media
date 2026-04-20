@@ -61,7 +61,7 @@ export default function ProductPage() {
         <div className="grid md:grid-cols-2 gap-16">
           {/* Service Icon/Visual */}
           <div className="flex items-center justify-center">
-            <div className="w-full aspect-square bg-gradient-to-br from-brand-teal/20 via-white/5 to-transparent rounded-3xl flex items-center justify-center border border-brand-teal/30">
+            <div className="w-full aspect-square bg-linear-to-br from-brand-teal/20 via-white/5 to-transparent rounded-3xl flex items-center justify-center border border-brand-teal/30">
               <div className="text-brand-teal opacity-80">
                 {categoryIcons[product.category] || <Code size={48} />}
               </div>

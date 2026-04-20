@@ -19,12 +19,12 @@ export default function CartPage() {
             <ShoppingBag size={40} className="text-brand-teal" />
           </div>
           <h1 className="font-display text-4xl font-bold mb-4">Your Cart</h1>
-          <p className="text-brand-gray text-lg mb-10">You haven't added any services yet. Browse our offerings to get started.</p>
+          <p className="text-brand-gray text-lg mb-10">You haven't added any books yet. Browse our library to get started.</p>
           <Link
             href="/shop"
             className="bg-brand-teal text-brand-dark font-bold px-8 py-4 rounded-full hover:bg-brand-teal-light transition uppercase tracking-widest"
           >
-            Browse Services
+            Browse the Library
           </Link>
         </div>
       </main>

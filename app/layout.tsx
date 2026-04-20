@@ -17,8 +17,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Zenvira Software Solutions | Custom Web & Software Development",
-  description: "Scalable, secure, and high-performance websites and applications tailored to your business goals. Expert development and design services.",
+  title: "Booklance Media | Premium Digital Library",
+  description: "Explore thousands of expertly curated ebooks across business, technology, fiction, and self-improvement.",
 };
 
 export default function RootLayout({
@@ -27,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="bg-brand-dark text-white antialiased">
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`} suppressHydrationWarning>
+      <body className="bg-brand-dark text-white antialiased" suppressHydrationWarning>
         <CartProvider>
           <Navbar />
           {children}

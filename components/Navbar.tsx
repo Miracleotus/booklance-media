@@ -3,15 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
-  { href: "/cart", label: "Cart" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -23,17 +21,18 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
         {/* LOGO */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <Image 
-            src="/logo.png" 
-            alt="Zenvira Logo" 
-            width={40} 
-            height={40}
-            className="group-hover:opacity-80 transition-opacity"
-          />
-          <span className="font-display text-xl font-bold tracking-tight bg-linear-to-r from-brand-teal to-brand-teal/80 bg-clip-text text-transparent">
-            ZENVIRA
-          </span>
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="flex items-center">
+            <Image 
+              src="/logo.png" 
+              alt="Booklance Media Logo" 
+              width={180} 
+              height={60}
+              priority
+              unoptimized
+              className="group-hover:opacity-80 transition-opacity"
+            />
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -49,6 +48,13 @@ export default function Navbar() {
           ))}
 
           <Link
+            href="/cart"
+            className="text-brand-gray hover:text-brand-teal transition-colors flex items-center gap-2 font-body text-sm tracking-widest uppercase"
+          >
+            <ShoppingCart size={18} /> Cart
+          </Link>
+
+          <Link
             href="/contact"
             className="bg-brand-teal text-brand-dark px-6 py-2.5 text-sm font-bold tracking-widest uppercase hover:bg-brand-teal-light transition-colors rounded-full"
           >
@@ -57,7 +63,14 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-6">
+          <Link 
+            href="/cart" 
+            className="text-brand-gray hover:text-brand-teal transition-colors"
+            aria-label="Cart"
+          >
+            <ShoppingCart size={24} />
+          </Link>
           <button
             onClick={() => setOpen(!open)}
             className="text-brand-gray"
