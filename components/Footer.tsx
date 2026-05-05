@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="py-8 px-8 border-t border-white/10 mt-12 bg-brand-navy/20">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
         <div className="text-sm text-brand-gray">
-          &copy; {new Date().getFullYear()} Booklance Media
+          &copy; {new Date().getFullYear()} Gluetrain
         </div>
         <div className="space-x-6 mt-4 md:mt-0 flex items-center">
           <Link href="/privacy-policy" className="text-sm text-brand-gray hover:text-brand-teal transition-colors">Privacy</Link>

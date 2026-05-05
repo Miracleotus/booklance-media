@@ -24,8 +24,8 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2 group">
           <div className="flex items-center">
             <Image 
-              src="/logo.png" 
-              alt="Booklance Media Logo" 
+              src="/logo-gt.png"
+              alt="Gluetrain Logo"
               width={180} 
               height={60}
               priority

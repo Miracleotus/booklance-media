@@ -15,7 +15,7 @@ const sections = [
   {
     number: "1",
     title: "Instant Digital Delivery",
-    content: "Booklance Media is a 100% digital platform. We do not sell physical books, and therefore, no physical shipping is required."
+    content: "Gluetrain is a 100% digital platform. We do not sell physical books, and therefore, no physical shipping is required."
   },
   {
     number: "2",
@@ -57,7 +57,7 @@ export default function ShippingPage() {
           className="prose prose-invert max-w-none mb-16"
         >
           <p className="text-brand-gray text-lg leading-relaxed mb-12">
-            This Delivery Policy explains how Booklance Media provides instant access to your purchased digital ebooks.
+            This Delivery Policy explains how Gluetrain provides instant access to your purchased digital ebooks.
           </p>
         </motion.div>
 
@@ -102,8 +102,8 @@ export default function ShippingPage() {
         >
           <p className="text-brand-gray text-sm">
             <span className="font-semibold text-white">Questions about this policy?</span> Contact us at{" "}
-            <a href="mailto:support@booklancemedia.com" className="text-brand-teal hover:text-brand-teal-light transition-colors">
-              support@booklancemedia.com
+            <a href="mailto:ops@gluetrain.com" className="text-brand-teal hover:text-brand-teal-light transition-colors">
+              ops@gluetrain.com
             </a>
           </p>
         </motion.div>

@@ -38,7 +38,7 @@ const process = [
 ];
 
 const testimonial = {
-  quote: "Booklance Media has completely transformed my daily commute. The formatting is flawless on my e-reader, and their tech category is unmatched.",
+  quote: "Gluetrain has completely transformed my daily commute. The formatting is flawless on my e-reader, and their tech category is unmatched.",
   author: "Sarah J., Software Engineer",
 };
 
@@ -86,7 +86,7 @@ export default function HomePage() {
             Your Next Great Read is Just a Click Away.
           </h1>
           <p className="text-brand-gray max-w-3xl text-lg mb-10 leading-relaxed">
-            Welcome to Booklance Media, your premium digital library. Explore thousands of expertly curated ebooks across business, technology, fiction, and self-improvement. Instant access on any device.
+            Welcome to Gluetrain, your premium digital library. Explore thousands of expertly curated ebooks across business, technology, fiction, and self-improvement. Instant access on any device.
           </p>
           <Link
             href="/shop"
@@ -98,7 +98,7 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* SECTION 2: ABOUT BOOKLANCE */}
+      {/* SECTION 2: ABOUT GLUETRAIN */}
       <motion.section 
         initial="initial"
         whileInView="whileInView"
@@ -110,7 +110,7 @@ export default function HomePage() {
           Knowledge Without Borders.
         </h2>
         <p className="text-brand-gray text-lg leading-relaxed max-w-3xl mx-auto">
-          We believe that transformative ideas and captivating stories should be accessible to everyone, everywhere. Booklance Media partners with independent authors and industry experts to bring you high-quality digital reading experiences that inspire, educate, and entertain.
+          We believe that transformative ideas and captivating stories should be accessible to everyone, everywhere. Gluetrain partners with independent authors and industry experts to bring you high-quality digital reading experiences that inspire, educate, and entertain.
         </p>
       </motion.section>
 
@@ -164,7 +164,7 @@ export default function HomePage() {
           variants={fadeInUp}
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-            The Booklance Advantage
+            The Gluetrain Advantage
           </h2>
           <p className="text-brand-gray text-lg max-w-3xl mx-auto leading-relaxed">
             We don't just sell files; we deliver an optimized reading experience. All our ebooks are expertly formatted, DRM-free, and compatible with Kindle, Apple Books, Android, and PC. No waiting for shipping—just instant, lifelong access to your digital library.
@@ -242,7 +242,7 @@ export default function HomePage() {
             Ready to Start Reading?
           </h2>
           <p className="text-brand-gray text-lg mb-10 max-w-2xl mx-auto">
-            Join thousands of lifelong learners and avid readers who trust Booklance Media for their digital library.
+            Join thousands of lifelong learners and avid readers who trust Gluetrain for their digital library.
           </p>
           <Link
             href="/shop"

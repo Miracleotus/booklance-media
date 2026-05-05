@@ -15,7 +15,7 @@ const sections = [
   {
     number: "1",
     title: "Information We Collect",
-    content: "At Booklance Media, we collect personal information you provide when you purchase an ebook, create an account, or subscribe to our newsletter. This includes your name, email address, and payment information. We also collect non-identifying data such as browser type and IP address to improve our website's functionality."
+    content: "At Gluetrain, we collect personal information you provide when you purchase an ebook, create an account, or subscribe to our newsletter. This includes your name, email address, and payment information. We also collect non-identifying data such as browser type and IP address to improve our website's functionality."
   },
   {
     number: "2",
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
           className="prose prose-invert max-w-none mb-16"
         >
           <p className="text-brand-gray text-lg leading-relaxed mb-12">
-            This Privacy Policy describes how Booklance Media ("we", "us", "our") collects, uses, stores, and protects personal information gathered through BooklanceMedia.com and through the delivery of our digital library services. By using our Site or engaging our services, you agree to the practices described in this policy.
+            This Privacy Policy describes how Gluetrain ("we", "us", "our") collects, uses, stores, and protects personal information gathered through Gluetrain.com and through the delivery of our digital library services. By using our Site or engaging our services, you agree to the practices described in this policy.
           </p>
         </motion.div>
 
@@ -105,8 +105,8 @@ export default function PrivacyPage() {
         >
           <p className="text-brand-gray text-sm">
             <span className="font-semibold text-white">Questions about this policy?</span> Contact us at{" "}
-            <a href="mailto:support@booklancemedia.com" className="text-brand-teal hover:text-brand-teal-light transition-colors">
-              support@booklancemedia.com
+            <a href="mailto:ops@gluetrain.com" className="text-brand-teal hover:text-brand-teal-light transition-colors">
+              ops@gluetrain.com
             </a>
           </p>
         </motion.div>

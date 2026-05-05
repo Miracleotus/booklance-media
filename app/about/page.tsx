@@ -45,10 +45,10 @@ export default function AboutPage() {
           className="relative z-10 flex flex-col items-center max-w-4xl"
         >
           <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6">
-            The Story Behind Booklance Media
+            The Story Behind Gluetrain
           </h1>
           <p className="text-brand-gray text-lg md:text-xl leading-relaxed max-w-3xl">
-            Booklance Media was born from a simple frustration: finding high-quality, well-formatted ebooks from independent creators was too difficult. We set out to build a platform that champions both the reader and the author—a streamlined digital bookstore focused entirely on the modern reading experience.
+            Gluetrain was born from a simple frustration: finding high-quality, well-formatted ebooks from independent creators was too difficult. We set out to build a platform that champions both the reader and the author—a streamlined digital bookstore focused entirely on the modern reading experience.
           </p>
         </motion.div>
       </section>
@@ -84,7 +84,7 @@ export default function AboutPage() {
         </h2>
         <div className="text-brand-gray text-lg leading-relaxed">
           <p>
-            We are more than just a retailer; we are a launchpad. Booklance Media works closely with independent authors, freelance writers, and industry experts, ensuring they receive fair compensation for their work while connecting them directly with a global audience of eager readers.
+            We are more than just a retailer; we are a launchpad. Gluetrain works closely with independent authors, freelance writers, and industry experts, ensuring they receive fair compensation for their work while connecting them directly with a global audience of eager readers.
           </p>
         </div>
       </motion.section>

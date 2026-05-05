@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Booklance Media | Premium Digital Library",
+  title: "Gluetrain | Premium Digital Library",
   description: "Explore thousands of expertly curated ebooks across business, technology, fiction, and self-improvement.",
 };
 

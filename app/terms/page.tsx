@@ -15,7 +15,7 @@ const sections = [
   {
     number: "1",
     title: "Intellectual Property",
-    content: "All ebooks sold on Booklance Media are the intellectual property of their respective authors and publishers. Upon purchase, you are granted a personal, non-exclusive, non-transferable license to read the ebook. You may not copy, distribute, share, or resell the digital files."
+    content: "All ebooks sold on Gluetrain are the intellectual property of their respective authors and publishers. Upon purchase, you are granted a personal, non-exclusive, non-transferable license to read the ebook. You may not copy, distribute, share, or resell the digital files."
   },
   {
     number: "2",
@@ -25,7 +25,7 @@ const sections = [
   {
     number: "3",
     title: "Modifications to Service",
-    content: "We reserve the right to modify or discontinue any product, service, or pricing on the website without prior notice. Booklance Media shall not be liable to you or any third party for any modification or suspension of the service."
+    content: "We reserve the right to modify or discontinue any product, service, or pricing on the website without prior notice. Gluetrain shall not be liable to you or any third party for any modification or suspension of the service."
   }
 ];
 
@@ -57,7 +57,7 @@ export default function TermsPage() {
           className="prose prose-invert max-w-none mb-16"
         >
           <p className="text-brand-gray text-lg leading-relaxed mb-12">
-            These Terms and Conditions govern your use of BooklanceMedia.com and all services provided by Booklance Media. By accessing our Site or engaging our services, you agree to these Terms in full.
+            These Terms and Conditions govern your use of Gluetrain.com and all services provided by Gluetrain. By accessing our Site or engaging our services, you agree to these Terms in full.
           </p>
         </motion.div>
 
@@ -102,8 +102,8 @@ export default function TermsPage() {
         >
           <p className="text-brand-gray text-sm">
             <span className="font-semibold text-white">Questions about these terms?</span> Contact us at{" "}
-            <a href="mailto:support@booklancemedia.com" className="text-brand-teal hover:text-brand-teal-light transition-colors">
-              support@booklancemedia.com
+            <a href="mailto:ops@gluetrain.com" className="text-brand-teal hover:text-brand-teal-light transition-colors">
+              ops@gluetrain.com
             </a>
           </p>
         </motion.div>
