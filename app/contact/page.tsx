@@ -44,15 +44,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-
-               <div>
-                <h3 className="font-bold text-xl mb-2">Phone</h3>
-                <p className="text-brand-gray leading-relaxed">
-                  08065352832
-                </p>
-              </div>
-            </div>
-
             <div className="flex items-start gap-4">
               <div className="text-brand-teal mt-1">
                 <Phone size={24} />
