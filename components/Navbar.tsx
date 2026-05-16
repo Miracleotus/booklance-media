@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCurrency } from "@/context/CurrencyContext";
+import { useCart } from "@/context/CartContext";
 
 const links = [
   { href: "/", label: "Home" },
@@ -15,6 +17,8 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { currency, setCurrency } = useCurrency();
+  const { totalItems } = useCart();
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/10">
@@ -49,10 +53,33 @@ export default function Navbar() {
 
           <Link
             href="/cart"
-            className="text-brand-gray hover:text-brand-teal transition-colors flex items-center gap-2 font-body text-sm tracking-widest uppercase"
+            className="relative text-brand-gray hover:text-brand-teal transition-colors flex items-center gap-2 font-body text-sm tracking-widest uppercase"
           >
-            <ShoppingCart size={18} /> Cart
+            <ShoppingCart size={18} />
+            Cart
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-3 bg-brand-teal text-brand-dark text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                {totalItems > 9 ? "9+" : totalItems}
+              </span>
+            )}
           </Link>
+
+          {/* Currency switcher */}
+          <div className="flex items-center gap-1 bg-brand-navy/60 border border-white/10 rounded-full px-1 py-1">
+            {(["USD", "NGN"] as const).map((c) => (
+              <button
+                key={c}
+                onClick={() => setCurrency(c)}
+                className={`px-3 py-1 rounded-full text-xs font-bold tracking-widest transition-all ${
+                  currency === c
+                    ? "bg-brand-teal text-brand-dark"
+                    : "text-brand-gray hover:text-white"
+                }`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
 
           <Link
             href="/contact"
@@ -64,12 +91,17 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-6">
-          <Link 
-            href="/cart" 
-            className="text-brand-gray hover:text-brand-teal transition-colors"
+          <Link
+            href="/cart"
+            className="relative text-brand-gray hover:text-brand-teal transition-colors"
             aria-label="Cart"
           >
             <ShoppingCart size={24} />
+            {totalItems > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 bg-brand-teal text-brand-dark text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                {totalItems > 9 ? "9+" : totalItems}
+              </span>
+            )}
           </Link>
           <button
             onClick={() => setOpen(!open)}
@@ -102,6 +134,22 @@ export default function Navbar() {
                   {l.label}
                 </Link>
               ))}
+              <div className="flex items-center gap-2 pt-2 border-t border-white/10">
+                <span className="text-brand-gray text-xs uppercase tracking-widest">Currency:</span>
+                {(["USD", "NGN"] as const).map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setCurrency(c)}
+                    className={`px-3 py-1 rounded-full text-xs font-bold tracking-widest transition-all ${
+                      currency === c
+                        ? "bg-brand-teal text-brand-dark"
+                        : "text-brand-gray hover:text-white"
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}

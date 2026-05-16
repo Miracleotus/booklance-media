@@ -4,9 +4,11 @@ import { useParams } from "next/navigation";
 import { products } from "@/lib/products";
 import { formatPrice } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import Link from "next/link";
 import { ArrowLeft, ShoppingCart, Code, Zap, Shield, Wrench, CheckCircle, Palette, Check } from "lucide-react";
 import { useState } from "react";
+import BookCover from "@/components/BookCover";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   "Web Development": <Code size={48} />,
@@ -22,6 +24,7 @@ export default function ProductPage() {
   const productId = params.id as string;
   const product = products.find(p => p.id === productId);
   const { addToCart } = useCart();
+  const { currency } = useCurrency();
   const [addedToCart, setAddedToCart] = useState(false);
 
   if (!product) {
@@ -59,12 +62,10 @@ export default function ProductPage() {
         </Link>
 
         <div className="grid md:grid-cols-2 gap-16">
-          {/* Service Icon/Visual */}
+          {/* Book Cover */}
           <div className="flex items-center justify-center">
-            <div className="w-full aspect-square bg-linear-to-br from-brand-teal/20 via-white/5 to-transparent rounded-3xl flex items-center justify-center border border-brand-teal/30">
-              <div className="text-brand-teal opacity-80">
-                {categoryIcons[product.category] || <Code size={48} />}
-              </div>
+            <div className="w-full max-w-xs aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
+              <BookCover product={product} />
             </div>
           </div>
 
@@ -79,7 +80,7 @@ export default function ProductPage() {
             <div className="bg-brand-navy/50 border border-brand-teal/30 p-6 rounded-2xl">
               <p className="text-white/60 text-sm mb-2">Pricing</p>
               <div className="text-5xl font-bold text-brand-teal">
-                {formatPrice(product.price)}
+                {formatPrice(currency === "NGN" ? product.price * 1600 : product.price, currency)}
               </div>
             </div>
 
