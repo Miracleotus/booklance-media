@@ -2,35 +2,19 @@
 
 import { motion, Variants } from "framer-motion";
 import { products } from "@/lib/products";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, ArrowRight } from "lucide-react";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useCart } from "@/context/CartContext";
 import BookCover from "@/components/BookCover";
 
-const fadeInUp: Variants = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
+const stagger: Variants = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.07 } },
 };
 
-const staggerContainer: Variants = {
-  initial: { opacity: 0 },
-  whileInView: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const staggerItem: Variants = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+const item: Variants = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 export default function ShopPage() {
@@ -38,75 +22,105 @@ export default function ShopPage() {
   const { addToCart } = useCart();
 
   return (
-    <main className="bg-brand-dark text-white font-body pt-32 pb-24 px-6 min-h-screen">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial="initial"
-          animate="whileInView"
-          variants={fadeInUp}
-          className="text-center mb-12"
-        >
-          <h1 className="font-display text-5xl md:text-6xl font-bold mb-6">Our Library</h1>
-          <p className="text-brand-gray text-lg max-w-2xl mx-auto mb-8">
-            Explore our premium collection of digital books. Instant access on any device.
-          </p>
+    <main className="bg-brand-dark text-white font-body min-h-screen pt-16">
 
-          {/* Currency Switcher */}
-          <div className="inline-flex items-center gap-2 bg-brand-navy/60 border border-white/10 rounded-full px-2 py-2">
-            <span className="text-brand-gray text-xs uppercase tracking-widest pl-2">Currency</span>
-            {(["USD", "NGN"] as const).map((c) => (
-              <button
-                key={c}
-                onClick={() => setCurrency(c)}
-                className={`px-5 py-1.5 rounded-full text-sm font-bold tracking-widest transition-all ${
-                  currency === c
-                    ? "bg-brand-teal text-brand-dark"
-                    : "text-brand-gray hover:text-white"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-        </motion.div>
+      {/* Page header */}
+      <div className="bg-brand-navy/60 border-b border-white/8">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-6 h-[2px] bg-brand-teal" />
+              <span className="text-brand-teal text-[11px] font-bold uppercase tracking-[0.18em] font-body">
+                Browse the Collection
+              </span>
+            </div>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <h1 className="font-display font-bold leading-tight"
+                style={{ fontSize: "clamp(40px, 6vw, 72px)" }}>
+                Our Library
+              </h1>
+              <div className="flex flex-col items-start md:items-end gap-2">
+                <span className="text-brand-gray text-xs uppercase tracking-widest font-body">
+                  Display currency
+                </span>
+                <div className="flex border border-white/12 overflow-hidden">
+                  {(["USD", "NGN"] as const).map((c) => (
+                    <button
+                      key={c}
+                      onClick={() => setCurrency(c)}
+                      className={`px-5 py-2 text-xs font-bold tracking-widest transition-all font-body ${
+                        currency === c
+                          ? "bg-brand-teal text-white"
+                          : "text-brand-gray hover:text-white hover:bg-white/5"
+                      }`}
+                    >
+                      {c}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
 
+      {/* Product grid */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
         <motion.div
-          variants={staggerContainer}
+          variants={stagger}
           initial="initial"
-          animate="whileInView"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          animate="animate"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
           {products.map((product) => (
             <motion.div
               key={product.id}
-              variants={staggerItem}
-              className="bg-brand-navy/30 border border-white/10 rounded-2xl p-6 flex flex-col hover:border-brand-teal/50 transition-colors group"
+              variants={item}
+              className="group flex flex-col bg-brand-navy/40 border border-white/8 hover:border-brand-teal/40 transition-all duration-300"
             >
-              {/* Book Cover */}
-              <div className="rounded-xl aspect-[3/4] mb-6 overflow-hidden shadow-lg group-hover:shadow-brand-teal/10 transition-shadow">
-                <BookCover product={product} />
-              </div>
-
-              <div className="flex justify-between items-start mb-4 gap-4">
-                <div>
-                  <span className="text-brand-teal text-xs font-bold uppercase tracking-wider mb-2 block">
+              {/* Cover */}
+              <div className="aspect-[3/4] overflow-hidden relative">
+                <div className="w-full h-full group-hover:scale-[1.03] transition-transform duration-500">
+                  <BookCover product={product} />
+                </div>
+                {/* Category badge */}
+                <div className="absolute top-3 left-3">
+                  <span className="bg-brand-dark/80 backdrop-blur-sm text-brand-teal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 font-body border border-brand-teal/30">
                     {product.category}
                   </span>
-                  <h2 className="font-display text-xl font-bold leading-tight">{product.name}</h2>
                 </div>
-                <span className="font-display text-lg font-bold whitespace-nowrap">
-                  {symbol}{convert(product.price)}
-                </span>
               </div>
 
-              <p className="text-brand-gray text-sm mb-8 flex-grow">{product.shortDesc}</p>
+              {/* Info */}
+              <div className="flex flex-col flex-1 p-5">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h2 className="font-display text-xl font-bold leading-tight flex-1">
+                    {product.name}
+                  </h2>
+                  <span className="font-display text-lg font-bold text-brand-teal shrink-0 whitespace-nowrap">
+                    {symbol}{convert(product.price)}
+                  </span>
+                </div>
 
-              <button
-                onClick={() => addToCart(product)}
-                className="w-full bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-brand-dark font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
-              >
-                <ShoppingCart size={18} /> Add to Cart
-              </button>
+                <p className="text-brand-gray text-xs leading-relaxed mb-5 flex-1 font-body">
+                  {product.shortDesc}
+                </p>
+
+                <button
+                  onClick={() => addToCart(product)}
+                  className="w-full flex items-center justify-between px-4 py-3 border border-brand-teal/30 text-brand-teal hover:bg-brand-teal hover:text-white hover:border-brand-teal transition-all duration-200 font-body text-xs font-bold uppercase tracking-widest group/btn"
+                >
+                  <span className="flex items-center gap-2">
+                    <ShoppingCart size={14} />
+                    Add to Cart
+                  </span>
+                  <ArrowRight size={14} className="-translate-x-1 group-hover/btn:translate-x-0 opacity-0 group-hover/btn:opacity-100 transition-all" />
+                </button>
+              </div>
             </motion.div>
           ))}
         </motion.div>

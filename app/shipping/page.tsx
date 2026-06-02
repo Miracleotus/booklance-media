@@ -4,29 +4,56 @@ import { motion, Variants } from "framer-motion";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 30 },
-  whileInView: { 
-    opacity: 1, 
+  whileInView: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 const sections = [
   {
     number: "1",
-    title: "Instant Digital Delivery",
-    content: "Gluetrain is a 100% digital platform. We do not sell physical books, and therefore, no physical shipping is required."
+    title: "Digital Delivery — No Physical Shipping",
+    content: `Gluetrain is a 100% digital platform. Every product in our library is an ebook delivered electronically. We do not stock, package, or physically ship any items. This means there are no shipping fees, no customs delays, and no waiting for a parcel — your purchase is available almost instantly, regardless of where you are in the world.
+
+Whether you are ordering from Lagos, London, New York, or anywhere else, the delivery experience is identical: fast, seamless, and available 24 hours a day, 7 days a week, including public holidays.`,
   },
   {
     number: "2",
-    title: "How to Access Your Purchase",
-    content: "Immediately upon completing your secure checkout, you will be redirected to a download page where you can access your ebook files (typically in EPUB or PDF format). You will also receive an automated email containing a secure download link for your records."
+    title: "How Delivery Works",
+    content: `Once your payment is confirmed, you will receive an automated order confirmation email at the address you provided at checkout. This email contains your secure, personalized download link for each ebook you purchased.
+
+Click the link in your email to access your files. Depending on the title, your ebook will be available in EPUB format, PDF format, or both. EPUB is ideal for most ebook readers and mobile apps, while PDF is best for reading on a computer or printing. If you are unsure which format is right for your device, check our FAQ or email us at ops@gluetrain.com and we will guide you.`,
   },
   {
     number: "3",
-    title: "Download Limits",
-    content: "To protect our authors' intellectual property, download links may be limited to a specific number of attempts or expire after a certain period (e.g., 30 days). We highly recommend saving the downloaded file securely to your personal device or e-reader immediately after purchase."
-  }
+    title: "Delivery Timeframe",
+    content: `In the vast majority of cases, your order confirmation and download link will arrive in your inbox within a few minutes of completing checkout. Occasionally, email delivery may be slightly delayed due to high traffic, spam filter settings, or issues with your email provider.
+
+If you have not received your confirmation email within 30 minutes of purchase, please first check your spam or junk mail folder. If it is not there, contact us at ops@gluetrain.com with your name and the email address used at checkout, and we will resend your download link promptly. We aim to resolve all delivery issues within 1–2 business hours.`,
+  },
+  {
+    number: "4",
+    title: "Download Limits and Link Expiry",
+    content: `To protect our authors' intellectual property and prevent unauthorized distribution, download links may be subject to usage limits. Each link is valid for a set number of download attempts and will expire 30 days after the purchase date. We strongly recommend downloading and saving your ebook files to your personal device or cloud storage immediately after receiving your confirmation email.
+
+If your download link expires or reaches its usage limit before you have had a chance to save your file, please contact us at ops@gluetrain.com and we will issue a fresh link free of charge, provided you can verify your purchase.`,
+  },
+  {
+    number: "5",
+    title: "Compatible Devices and Applications",
+    content: `Our ebooks are formatted to work across a wide range of devices and platforms. EPUB files are compatible with Apple Books (iPhone, iPad, Mac), Google Play Books (Android and web), Kobo e-readers, and desktop apps such as Adobe Digital Editions and Calibre. PDF files can be opened with any PDF viewer, including Adobe Acrobat Reader, Preview on macOS, and Google Chrome.
+
+Kindle users can read EPUB files by converting them using the free Calibre app or by sending files to their Kindle via the official Amazon Send to Kindle service. If you encounter any compatibility issues, our support team is happy to assist.`,
+  },
+  {
+    number: "6",
+    title: "International Customers",
+    content: `Because Gluetrain delivers entirely digitally, there are no import duties, customs inspections, or international shipping restrictions that apply to your order. Our library is accessible to customers worldwide.
+
+Prices are listed in USD by default, with an NGN equivalent available via the currency switcher on our site. Payments are processed in the currency you select at checkout. If you have any questions specific to purchasing from your country, please do not hesitate to reach out to us at ops@gluetrain.com.`,
+  },
 ];
 
 export default function ShippingPage() {
@@ -40,12 +67,11 @@ export default function ShippingPage() {
           className="mb-16"
         >
           <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight mb-8">
-            Shipping & Delivery Policy
+            Shipping &amp; Delivery Policy
           </h1>
-          <div className="space-y-4 text-brand-gray text-lg">
-            <p>
-              <span className="font-semibold">Effective Date:</span> April 18, 2026
-            </p>
+          <div className="space-y-2 text-brand-gray text-lg">
+            <p><span className="font-semibold text-white">Effective Date:</span> April 18, 2026</p>
+            <p><span className="font-semibold text-white">Last Updated:</span> April 18, 2026</p>
           </div>
         </motion.div>
 
@@ -56,8 +82,10 @@ export default function ShippingPage() {
           variants={fadeInUp}
           className="prose prose-invert max-w-none mb-16"
         >
-          <p className="text-brand-gray text-lg leading-relaxed mb-12">
-            This Delivery Policy explains how Gluetrain provides instant access to your purchased digital ebooks.
+          <p className="text-brand-gray text-lg leading-relaxed">
+            This Delivery Policy explains how Gluetrain fulfills your digital ebook orders. Because all of our
+            products are delivered electronically, there is no physical shipping involved. This page explains
+            exactly what to expect after you complete your purchase.
           </p>
         </motion.div>
 
@@ -77,14 +105,10 @@ export default function ShippingPage() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h2 className="font-display text-2xl font-bold mb-4">
-                    {section.title}
-                  </h2>
+                  <h2 className="font-display text-2xl font-bold mb-4">{section.title}</h2>
                   <div className="space-y-4">
-                    {section.content.split('\n\n').map((paragraph, i) => (
-                      <p key={i} className="text-brand-gray text-lg leading-relaxed">
-                        {paragraph}
-                      </p>
+                    {section.content.split("\n\n").map((paragraph, i) => (
+                      <p key={i} className="text-brand-gray text-lg leading-relaxed">{paragraph}</p>
                     ))}
                   </div>
                 </div>
@@ -101,7 +125,7 @@ export default function ShippingPage() {
           className="mt-24 p-8 border border-white/10 rounded-2xl bg-white/2"
         >
           <p className="text-brand-gray text-sm">
-            <span className="font-semibold text-white">Questions about this policy?</span> Contact us at{" "}
+            <span className="font-semibold text-white">Questions about delivery?</span> Contact us at{" "}
             <a href="mailto:ops@gluetrain.com" className="text-brand-teal hover:text-brand-teal-light transition-colors">
               ops@gluetrain.com
             </a>

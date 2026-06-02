@@ -21,59 +21,49 @@ export default function Navbar() {
   const { totalItems } = useCart();
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="fixed top-0 w-full z-50 bg-brand-dark/98 backdrop-blur-sm border-b border-white/8">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
-        {/* LOGO */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="flex items-center">
-            <Image 
-              src="/logo-gt.png"
-              alt="Gluetrain Logo"
-              width={180} 
-              height={60}
-              priority
-              unoptimized
-              className="group-hover:opacity-80 transition-opacity"
-            />
-          </div>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
+          <div className="w-[3px] h-7 bg-brand-teal group-hover:h-9 transition-all duration-300 rounded-full" />
+          <Image
+            src="/logo-gt.png"
+            alt="Gluetrain"
+            width={148}
+            height={48}
+            priority
+            unoptimized
+            className="group-hover:opacity-70 transition-opacity"
+          />
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Desktop: center nav */}
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-brand-gray hover:text-brand-teal transition-colors font-body text-sm tracking-widest uppercase"
+              className="font-body text-sm text-brand-gray hover:text-white transition-colors relative group py-1"
             >
               {l.label}
+              <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-brand-teal group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
+        </div>
 
-          <Link
-            href="/cart"
-            className="relative text-brand-gray hover:text-brand-teal transition-colors flex items-center gap-2 font-body text-sm tracking-widest uppercase"
-          >
-            <ShoppingCart size={18} />
-            Cart
-            {totalItems > 0 && (
-              <span className="absolute -top-2 -right-3 bg-brand-teal text-brand-dark text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                {totalItems > 9 ? "9+" : totalItems}
-              </span>
-            )}
-          </Link>
-
-          {/* Currency switcher */}
-          <div className="flex items-center gap-1 bg-brand-navy/60 border border-white/10 rounded-full px-1 py-1">
+        {/* Desktop: right actions */}
+        <div className="hidden md:flex items-center gap-3">
+          {/* Currency toggle */}
+          <div className="flex border border-white/12 overflow-hidden">
             {(["USD", "NGN"] as const).map((c) => (
               <button
                 key={c}
                 onClick={() => setCurrency(c)}
-                className={`px-3 py-1 rounded-full text-xs font-bold tracking-widest transition-all ${
+                className={`px-3 py-1.5 text-[11px] font-bold tracking-widest transition-all font-body ${
                   currency === c
-                    ? "bg-brand-teal text-brand-dark"
-                    : "text-brand-gray hover:text-white"
+                    ? "bg-brand-teal text-white"
+                    : "text-brand-gray hover:text-white hover:bg-white/5"
                 }`}
               >
                 {c}
@@ -81,47 +71,58 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Cart */}
+          <Link
+            href="/cart"
+            className="relative flex items-center gap-1.5 text-brand-gray hover:text-white transition-colors px-2 py-1.5 text-sm font-body"
+          >
+            <ShoppingCart size={17} />
+            <span>Cart</span>
+            {totalItems > 0 && (
+              <span className="absolute -top-1 left-5 bg-brand-teal text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                {totalItems > 9 ? "9+" : totalItems}
+              </span>
+            )}
+          </Link>
+
+          {/* CTA */}
           <Link
             href="/contact"
-            className="bg-brand-teal text-brand-dark px-6 py-2.5 text-sm font-bold tracking-widest uppercase hover:bg-brand-teal-light transition-colors rounded-full"
+            className="border border-brand-teal text-brand-teal px-4 py-2 text-[11px] font-bold tracking-widest uppercase hover:bg-brand-teal hover:text-white transition-all font-body"
           >
             Get in Touch
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center gap-6">
-          <Link
-            href="/cart"
-            className="relative text-brand-gray hover:text-brand-teal transition-colors"
-            aria-label="Cart"
-          >
-            <ShoppingCart size={24} />
+        {/* Mobile icons */}
+        <div className="md:hidden flex items-center gap-4">
+          <Link href="/cart" className="relative text-brand-gray hover:text-white transition-colors">
+            <ShoppingCart size={21} />
             {totalItems > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-brand-teal text-brand-dark text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+              <span className="absolute -top-1.5 -right-1.5 bg-brand-teal text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
                 {totalItems > 9 ? "9+" : totalItems}
               </span>
             )}
           </Link>
           <button
             onClick={() => setOpen(!open)}
-            className="text-brand-gray"
+            className="text-brand-gray hover:text-white transition-colors"
             aria-label="Toggle menu"
           >
-            {open ? <X size={24} /> : <Menu size={24} />}
+            {open ? <X size={21} /> : <Menu size={21} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-brand-dark border-t border-white/10 overflow-hidden"
+            transition={{ duration: 0.22, ease: "easeInOut" }}
+            className="md:hidden border-t border-white/8 overflow-hidden bg-brand-navy"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
               {links.map((l) => (
@@ -129,21 +130,21 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-brand-gray hover:text-brand-teal transition-colors uppercase tracking-widest text-sm"
+                  className="text-brand-gray hover:text-white transition-colors font-body text-sm"
                 >
                   {l.label}
                 </Link>
               ))}
-              <div className="flex items-center gap-2 pt-2 border-t border-white/10">
-                <span className="text-brand-gray text-xs uppercase tracking-widest">Currency:</span>
+              <div className="flex items-center gap-2 pt-4 border-t border-white/10">
+                <span className="text-brand-gray text-xs uppercase tracking-widest mr-1 font-body">Currency</span>
                 {(["USD", "NGN"] as const).map((c) => (
                   <button
                     key={c}
                     onClick={() => setCurrency(c)}
-                    className={`px-3 py-1 rounded-full text-xs font-bold tracking-widest transition-all ${
+                    className={`px-3 py-1 text-[11px] font-bold tracking-widest transition-all border font-body ${
                       currency === c
-                        ? "bg-brand-teal text-brand-dark"
-                        : "text-brand-gray hover:text-white"
+                        ? "bg-brand-teal border-brand-teal text-white"
+                        : "border-white/20 text-brand-gray hover:text-white"
                     }`}
                   >
                     {c}
